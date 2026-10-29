@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아빠한약국 — 대치동 한약국 | 시안 v13</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --paper:#FAF8F2;
+  --ink:#26251F;
+  --ink-soft:#5C5A50;
+  --green:#45573F;
+  --green-deep:#33422F;
+  --gold:#A8894A;
+  --seal:#B03A2E;
+  --line:#E4E0D4;
+  --radius:2px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} .fade{transition:none!important;opacity:1!important;transform:none!important}}
+body{
+  font-family:'Pretendard',-apple-system,sans-serif;
+  background:var(--paper); color:var(--ink);
+  font-size:16px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(250,248,242,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font-family:'Gowun Batang',serif;font-weight:700;font-size:1.05rem;letter-spacing:.14em}
+.logo .dot{display:inline-block;width:8px;height:8px;background:var(--seal);border-radius:1px;margin-left:6px}
+.nav-call{font-size:.82rem;font-weight:600;border:1px solid var(--green);color:var(--green-deep);padding:7px 14px;border-radius:var(--radius)}
+
+/* ── 히어로 ── */
+.hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden;background:#2A241C}
+.hero-img{position:absolute;inset:0}
+.hero-img img{opacity:.88}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,26,18,.55) 0%,rgba(30,26,18,.25) 40%,rgba(28,34,26,.9) 100%)}
+.hero-inner{position:relative;z-index:2;width:100%;padding:0 22px 44px;max-width:720px;margin:0 auto}
+.hero-eyebrow{font-size:.75rem;letter-spacing:.26em;color:#D4BE8A;font-weight:600;margin-bottom:14px}
+.hero h1{font-family:'Gowun Batang',serif;font-weight:700;color:#FBF9F3;font-size:clamp(1.9rem,8vw,2.7rem);line-height:1.45;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+.hero-sub{color:#DDD8CA;font-size:.92rem;max-width:32ch;margin-top:16px}
+.hero-seal{position:absolute;top:26px;right:22px;z-index:2;width:56px;height:56px;border:2.5px solid #C9503F;border-radius:3px;color:#E8A092;font-family:'Gowun Batang',serif;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:1rem;transform:rotate(-3deg);background:rgba(30,26,18,.35)}
+.cta-row{display:flex;gap:10px;margin-top:26px}
+.btn{flex:1;text-align:center;padding:15px 0;border-radius:var(--radius);font-weight:700;font-size:.95rem}
+.btn-primary{background:#D9B76A;color:#221F17}
+.btn-ghost{border:1px solid rgba(251,249,243,.5);color:#FBF9F3}
+
+section{padding:64px 0;border-top:1px solid var(--line)}
+.sec-label{font-size:.75rem;letter-spacing:.3em;color:var(--gold);font-weight:600;margin-bottom:14px}
+h2{font-family:'Gowun Batang',serif;font-size:1.5rem;font-weight:700;line-height:1.4;margin-bottom:18px}
+.lead{color:var(--ink-soft);font-size:.95rem;max-width:52ch}
+figcaption{font-size:.74rem;color:var(--ink-soft);margin-top:8px}
+
+/* ── 네 가지 일 ── */
+.pillars{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:28px}
+.pillar{background:var(--paper);padding:24px 20px;position:relative}
+.pillar h3{font-family:'Gowun Batang',serif;font-size:1.05rem;margin-bottom:8px}
+.pillar .hanja{color:var(--gold);font-size:.8rem;letter-spacing:.2em;display:block;margin-bottom:10px}
+.pillar p{font-size:.88rem;color:var(--ink-soft)}
+@media(min-width:600px){.pillars{grid-template-columns:repeat(2,1fr)}}
+
+/* ── 상담 분야 ── */
+.focus{background:var(--green-deep);color:#EDEAE0;border-top:none}
+.focus .sec-label{color:#C8B583}
+.focus h2{color:#FAF8F2}
+.focus .lead{color:#C9C6B8}
+.area{margin-top:34px;padding-top:26px;border-top:1px solid rgba(250,248,242,.18)}
+.area:first-of-type{border-top:none;padding-top:0}
+.area-head{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
+.area-no{font-family:'Gowun Batang',serif;color:#C8B583;font-size:.85rem;letter-spacing:.1em}
+.area h3{font-family:'Gowun Batang',serif;font-size:1.25rem;color:#FAF8F2}
+.area .tagline{font-size:.85rem;color:#9BA08D;margin-bottom:14px}
+.area-item{display:flex;gap:14px;padding:12px 0;border-top:1px solid rgba(250,248,242,.1);font-size:.9rem}
+.area-item .k{font-family:'Gowun Batang',serif;color:#C8B583;white-space:nowrap;min-width:5.6em}
+.focus-note{margin-top:30px;font-size:.78rem;color:#9BA08D;line-height:1.7}
+
+/* ── 한약사 ── */
+.director{display:flex;flex-direction:column;gap:24px;margin-top:8px}
+.cred-photo{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;aspect-ratio:6/5;background:#EDEAE0}
+.career{list-style:none;margin-top:20px}
+.career li{padding:10px 0;border-bottom:1px solid var(--line);font-size:.9rem;display:flex;gap:14px}
+.career .yr{color:var(--gold);font-weight:600;min-width:3.4em;font-size:.8rem;padding-top:3px}
+blockquote{font-family:'Gowun Batang',serif;font-size:1.05rem;line-height:1.8;border-left:2px solid var(--gold);padding-left:18px;color:var(--ink)}
+.sign{margin-top:16px;font-size:.88rem;color:var(--ink-soft)}
+@media(min-width:600px){.director{flex-direction:row;align-items:flex-start}.director>div{flex:1}}
+
+/* ── 시설 ── */
+.fac-banner{margin-top:28px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;aspect-ratio:21/9}
+.fac-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+.fac-grid figure div{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.fac-grid .tall div{aspect-ratio:4/5}
+.fac-grid .sq{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fac-grid .sq figure div{aspect-ratio:1/1}
+@media(min-width:600px){.fac-grid{grid-template-columns:1.05fr 1fr;align-items:start}.fac-grid .sq{grid-template-columns:1fr}}
+.steps{margin-top:38px}
+.step{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+.step-no{font-family:'Gowun Batang',serif;color:var(--gold);font-weight:700;font-size:.95rem;min-width:2.4em}
+.step div p{font-size:.88rem;color:var(--ink-soft);margin-top:2px}
+.step div strong{font-size:.95rem}
+
+/* ── FAQ ── */
+.qa{margin-top:24px}
+.qa details{border-top:1px solid var(--line)}
+.qa details:last-child{border-bottom:1px solid var(--line)}
+.qa summary{padding:16px 0;cursor:pointer;font-weight:600;font-size:.93rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.qa summary::after{content:"+";color:var(--gold);font-size:1.2rem;font-weight:400}
+.qa details[open] summary::after{content:"−"}
+.qa .a{padding:0 0 18px;font-size:.88rem;color:var(--ink-soft)}
+.compliance{margin-top:26px;padding:16px 18px;background:#F3F0E6;border-radius:var(--radius);font-size:.76rem;color:var(--ink-soft);line-height:1.7}
+
+/* ── 오시는 길 ── */
+.map-embed{margin-top:26px;height:300px;border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;background:#EFEBDE}
+.map-embed iframe{width:100%;height:100%;border:0;display:block}
+.map-links{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.map-links a{font-size:.82rem;font-weight:600;color:var(--green-deep);border:1px solid var(--green);padding:9px 14px;border-radius:var(--radius)}
+.info-list{margin-top:22px;list-style:none}
+.info-list li{display:flex;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.info-list .lb{color:var(--gold);font-weight:600;min-width:5em;font-size:.82rem;letter-spacing:.1em;padding-top:2px}
+.hours{width:100%;margin-top:22px;border-collapse:collapse;font-size:.9rem}
+.hours td{padding:9px 0;border-bottom:1px solid var(--line)}
+.hours td:first-child{color:var(--gold);font-weight:600;width:5em;font-size:.82rem;letter-spacing:.1em}
+.hours .closed{color:var(--seal)}
+.book-btn{
+  display:block;margin-top:26px;text-align:center;
+  background:var(--green-deep);color:var(--paper);
+  font-weight:700;font-size:.95rem;letter-spacing:.04em;
+  padding:16px 0;border-radius:var(--radius);
+}
+
+footer{padding:44px 0 32px;border-top:1px solid var(--line);font-size:.76rem;color:var(--ink-soft);line-height:1.9}
+footer .serif{font-family:'Gowun Batang',serif;font-size:.95rem;color:var(--ink);margin-bottom:8px;display:block}
+
+/* ── 별도 광고 영역: (주)경건한 ── */
+.divider-note{
+  background:#EDEAE0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:14px 0;font-size:.74rem;color:var(--ink-soft);letter-spacing:.02em;
+}
+.ad{background:#1E1B16;color:#DCD6C8;padding:56px 0 90px;border:none}
+.ad-tag{
+  display:inline-block;font-size:.68rem;letter-spacing:.24em;font-weight:700;
+  border:1px solid #6B6152;color:#A79B84;padding:4px 10px;border-radius:2px;margin-bottom:18px;
+}
+.ad-brand{font-family:'Gowun Batang',serif;font-size:1.6rem;color:#EFE9DA;font-weight:700;line-height:1.4}
+.ad-co{font-size:.8rem;color:#8E8574;margin-top:8px;letter-spacing:.06em}
+.ad-photo{margin-top:24px;border:1px solid #3A342B;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/12}
+.ad-copy{font-size:.9rem;color:#B8AF9C;margin-top:20px;max-width:46ch}
+.ad-lines{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:22px}
+@media(min-width:600px){.ad-lines{grid-template-columns:repeat(3,1fr)}}
+.ad-line{border:1px solid #3A342B;border-radius:var(--radius);padding:14px 12px;background:#252119}
+.ad-line strong{font-family:'Gowun Batang',serif;font-size:.95rem;color:#E4DCC9;display:block}
+.ad-line span{font-size:.74rem;color:#8E8574}
+.ad-cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.ad-cta{display:inline-block;text-align:center;border:1px solid #A79B84;color:#EFE9DA;font-weight:700;font-size:.88rem;padding:13px 22px;border-radius:var(--radius)}
+.ad-cta-fill{background:#C8A968;border-color:#C8A968;color:#1E1B16}
+@media(max-width:520px){.ad-cta-row{flex-direction:column}.ad-cta{width:100%}}
+.ad-disc{margin-top:26px;padding-top:18px;border-top:1px solid #3A342B;font-size:.72rem;color:#7C7462;line-height:1.8}
+
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:var(--green-deep)}
+.sticky-cta a{flex:1;text-align:center;padding:16px 0;color:var(--paper);font-weight:700;font-size:.92rem}
+.sticky-cta a+a{border-left:1px solid rgba(250,248,242,.2)}
+@media(min-width:720px){.sticky-cta{display:none}}
+
+.fade{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.fade.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">아빠한약국<span class="dot"></span></div>
+    <a class="nav-call" href="tel:0269540850" target="_top">02-6954-0850</a>
+  </div>
+</header>
+
+<main>
+<!-- 1. 히어로 -->
+<div class="hero">
+  <div class="hero-img"><img src="images/img01.jpg" alt="아빠한약국 내부 전통 약장"></div>
+  <div class="hero-seal">아빠</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">대치동 · 한약사가 조제하는 한약국</div>
+    <h1>서랍 하나하나가<br>이 약국의 이력서입니다</h1>
+    <p class="hero-sub">은마아파트 학원가 한복판, 한약사가 직접 상담하고 원내에서 달여 드립니다.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://m.booking.naver.com/booking/13/bizes/1473783/items/7788114?area=pll&lang=ko&theme=place" target="_blank" rel="noopener">네이버 예약</a>
+      <a class="btn btn-ghost" href="tel:0269540850" target="_top">전화 상담</a>
+    </div>
+  </div>
+</div>
+
+<!-- 2. 소개 -->
+<section class="wrap fade">
+  <div class="sec-label">소개 · 하는 일</div>
+  <h2>한약국이 하는 네 가지 일</h2>
+  <p class="lead">아빠한약국은 약사법에 따라 한약사가 상담하고 조제하는 한약국입니다. 짓는 데서 끝나지 않고, 드시는 동안과 다 드신 뒤까지 함께 봅니다. 진단·치료가 필요한 경우 의료기관 진료를 먼저 권합니다.</p>
+  <div class="pillars">
+    <div class="pillar">
+      <span class="hanja">相談</span><h3>건강 상담</h3>
+      <p>체질과 생활 습관, 식사·수면·학습 리듬까지 상담실에서 일대일로 여쭙습니다.</p>
+    </div>
+    <div class="pillar">
+      <span class="hanja">調劑</span><h3>한약 조제</h3>
+      <p>한약사가 한약처방 범위에서 규격 약재로 직접 조제하고, 원내 탕전조제실에서 달입니다.</p>
+    </div>
+    <div class="pillar">
+      <span class="hanja">服藥指導</span><h3>복약 지도</h3>
+      <p>보관법과 복용 시간, 피할 음식, 복용 중인 양약과의 주의점까지 안내합니다.</p>
+    </div>
+    <div class="pillar">
+      <span class="hanja">經過確認</span><h3>경과 확인</h3>
+      <p>복용을 시작한 뒤 불편한 점은 없는지 확인하고, 다 드신 뒤 상태를 다시 여쭙습니다. 필요하면 다음 상담에 반영합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 상담 분야 -->
+<section class="focus fade">
+  <div class="wrap">
+    <div class="sec-label">주력 상담 분야</div>
+    <h2>가장 많이 여쭙는<br>세 가지 이야기</h2>
+    <p class="lead">대치역과 은마아파트 사이, 학원가 한가운데 있는 한약국입니다. 오래 한자리를 지키다 보니 자연스럽게 자주 듣는 이야기가 생겼습니다.</p>
+
+    <div class="area">
+      <div class="area-head"><span class="area-no">첫째</span><h3>수험생 건강관리</h3></div>
+      <p class="tagline">책상 앞에 오래 앉는 아이들의 몸을 가장 많이 살핍니다.</p>
+      <div class="area-item"><span class="k">학기 중</span><span>장시간 학습으로 인한 피로·소화 불편에 대한 생활 관리 상담</span></div>
+      <div class="area-item"><span class="k">시험 전</span><span>수면 리듬과 긴장 관리에 대한 상담과 복약 안내</span></div>
+      <div class="area-item"><span class="k">방학 기간</span><span>성장기 식습관 점검과 체질에 맞춘 조제 상담</span></div>
+      <div class="area-item"><span class="k">주말 상담</span><span>토요일 오후·일요일 예약제 — 평일에 시간 내기 어려운 가정을 위해</span></div>
+    </div>
+
+    <div class="area">
+      <div class="area-head"><span class="area-no">둘째</span><h3>여성 건강관리</h3></div>
+      <p class="tagline">아이를 데려오셨다가, 본인 이야기를 꺼내시는 분이 많습니다.</p>
+      <div class="area-item"><span class="k">환절기</span><span>계절이 바뀔 때 겪는 컨디션 변화에 대한 상담</span></div>
+      <div class="area-item"><span class="k">중년기</span><span>연령대에 따른 몸의 변화와 생활 관리에 대한 상담</span></div>
+      <div class="area-item"><span class="k">생활 관리</span><span>식사·수면·활동량을 함께 점검하고 조제 여부를 상의</span></div>
+    </div>
+
+    <div class="area">
+      <div class="area-head"><span class="area-no">셋째</span><h3>어르신 건강관리</h3></div>
+      <p class="tagline">복용 중인 약이 많을수록, 더 오래 여쭙고 더 신중하게 짓습니다.</p>
+      <div class="area-item"><span class="k">기력 관리</span><span>일상 활동과 식사량을 함께 살피는 상담</span></div>
+      <div class="area-item"><span class="k">병용 확인</span><span>복용 중인 약과 병력을 먼저 확인하고, 필요 시 의료기관 상의를 권유</span></div>
+      <div class="area-item"><span class="k">가족 동반</span><span>보호자와 함께 듣고 가정에서의 관리 방법을 안내</span></div>
+    </div>
+
+    <p class="focus-note">※ 위 내용은 상담에서 자주 다루는 주제를 안내한 것이며, 특정 질환에 대한 효능·효과를 의미하지 않습니다. 질병의 진단과 치료는 의료기관의 영역입니다.</p>
+  </div>
+</section>
+
+<!-- 4. 한약사 -->
+<section class="wrap fade">
+  <div class="sec-label">한약사 소개</div>
+  <h2>과학을 공부한 뒤,<br>한약을 공부했습니다</h2>
+  <div class="director">
+    <figure>
+      <div class="cred-photo"><img src="images/img02.jpg" alt="상담실 유리에 새겨진 한약사 약력"></div>
+      <figcaption>상담실 입구 유리에 약력을 새겨 두었습니다.</figcaption>
+    </figure>
+    <div>
+      <blockquote>"약을 짓기 전에, 먼저 하루를 충분히 듣습니다."</blockquote>
+      <ul class="career">
+        <li><span class="yr">학력</span><span>서울대학교 졸업</span></li>
+        <li><span class="yr">학력</span><span>서울대학교대학원 생명과학부 졸업 (호르몬 연구, 이학석사)</span></li>
+        <li><span class="yr">학력</span><span>경희대학교 한약학과 졸업</span></li>
+        <li><span class="yr">활동</span><span>태극임상한약학회 경희대분과 회장 역임</span></li>
+        <li><span class="yr">현재</span><span>아빠한약국 대표 한약사</span></li>
+        <li><span class="yr">현재</span><span>(주)경건한 대표</span></li>
+      </ul>
+      <p class="sign">김태관 한약사</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 시설 · 조제 -->
+<section class="wrap fade">
+  <div class="sec-label">시설 · 조제 과정</div>
+  <h2>상담실에서 듣고,<br>탕전조제실에서 짓습니다</h2>
+  <p class="lead">상담부터 조제, 탕전, 포장까지 한 공간에서 이루어집니다. 약장에 보관하는 모든 약재는 식품의약품안전처 규격품만 사용합니다.</p>
+
+  <figure>
+    <div class="fac-banner"><img src="images/img03.jpg" alt="아빠한약국 탕전조제실의 탕전기와 자동 포장기"></div>
+    <figcaption>탕전조제실 — 조제한 약을 원내에서 달이고 그 자리에서 포장합니다.</figcaption>
+  </figure>
+
+  <div class="fac-grid">
+    <figure class="tall">
+      <div><img src="images/img04.jpg" alt="아빠한약국 상담실과 대기 공간"></div>
+      <figcaption>상담실 — 유리 파티션 안에서 일대일로 상담합니다.</figcaption>
+    </figure>
+    <div class="sq">
+      <figure>
+        <div><img src="images/img05.jpg" alt="약재 이름이 새겨진 전통 약장 서랍"></div>
+        <figcaption>약장 — 약재별로 나누어 보관합니다.</figcaption>
+      </figure>
+      <figure>
+        <div><img src="images/img06.jpg" alt="탕전기"></div>
+        <figcaption>탕전기 — 온도와 시간을 처방에 맞춰 조절합니다.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><span class="step-no">첫째</span><div><strong>상담과 기록</strong><p>상담실에서 체질·증상·생활을 여쭙고 상담 기록지를 함께 작성합니다.</p></div></div>
+    <div class="step"><span class="step-no">둘째</span><div><strong>처방 선정</strong><p>한약사가 한약처방 범위에서 조제 내용을 정하고 설명드립니다.</p></div></div>
+    <div class="step"><span class="step-no">셋째</span><div><strong>계량과 조제</strong><p>약장의 약재를 저울로 계량해 직접 조제합니다.</p></div></div>
+    <div class="step"><span class="step-no">넷째</span><div><strong>탕전과 포장</strong><p>원내 탕전조제실에서 달여 밀봉 포장하고, 보관법을 함께 드립니다.</p></div></div>
+    <div class="step"><span class="step-no">다섯째</span><div><strong>경과 확인</strong><p>복용 중 불편한 점과 다 드신 뒤 상태를 다시 여쭙습니다.</p></div></div>
+  </div>
+</section>
+
+<!-- 6. FAQ -->
+<section class="wrap fade">
+  <div class="sec-label">상담 안내</div>
+  <h2>자주 하시는 질문</h2>
+  <div class="qa">
+    <details>
+      <summary>한약국은 한의원과 무엇이 다른가요?</summary>
+      <div class="a">한의원은 한의사가 진료·진단·처방하는 의료기관이고, 한약국은 한약사가 약사법에 따라 한약을 상담·조제하는 약국입니다. 진단이 필요한 경우 의료기관 진료를 먼저 권해 드립니다.</div>
+    </details>
+    <details>
+      <summary>상담은 어떻게 진행되나요?</summary>
+      <div class="a"><a href="https://m.booking.naver.com/booking/13/bizes/1473783/items/7788114?area=pll&lang=ko&theme=place" target="_blank" rel="noopener" style="text-decoration:underline">네이버 예약</a> 또는 전화(02-6954-0850)로 시간을 정하신 뒤 내방하시면, 상담실에서 체질과 생활 습관에 대해 여쭙습니다. 토요일 오후 2시 이후와 일요일은 예약 상담만 가능합니다.</div>
+    </details>
+    <details>
+      <summary>복용 중인 양약이 있어도 되나요?</summary>
+      <div class="a">복용 중인 약과 병력을 반드시 알려 주세요. 필요한 경우 처방 의사와의 상의를 먼저 권합니다.</div>
+    </details>
+    <details>
+      <summary>다 먹고 나면 다시 와야 하나요?</summary>
+      <div class="a">복용이 끝나면 상태를 여쭙습니다. 전화로도 괜찮고, 들르셔도 좋습니다. 확인 후 조제가 더 필요하지 않다고 판단되면 그렇게 말씀드립니다.</div>
+    </details>
+  </div>
+  <div class="compliance">
+    본 홈페이지의 내용은 일반적인 안내이며 특정 질환에 대한 효능·효과를 보증하지 않습니다. 한약의 효과는 개인의 체질과 상태에 따라 다를 수 있습니다. 질병의 진단과 치료는 의료기관과 상의하시기 바랍니다.
+  </div>
+</section>
+
+<!-- 7. 오시는 길 -->
+<section class="wrap fade" id="way">
+  <div class="sec-label">오시는 길 · 운영 안내</div>
+  <h2>은마아파트 북문에서<br>오른쪽으로 200m</h2>
+  <div class="map-embed">
+    <iframe
+      src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%98%81%EB%8F%99%EB%8C%80%EB%A1%9C57%EA%B8%B8%2028&z=17&output=embed&hl=ko"
+      title="아빠한약국 위치 지도" loading="lazy" allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div class="map-links">
+    <a href="https://m.place.naver.com/place/2000433099" target="_blank" rel="noopener">네이버 지도에서 보기 →</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%98%81%EB%8F%99%EB%8C%80%EB%A1%9C57%EA%B8%B8%2028" target="_blank" rel="noopener">길찾기 →</a>
+  </div>
+  <ul class="info-list">
+    <li><span class="lb">주소</span><span>서울 강남구 영동대로57길 28, 상가동 2층</span></li>
+    <li><span class="lb">지하철</span><span>대치역(3호선) 3번 출구에서 866m</span></li>
+    <li><span class="lb">도보</span><span>은마아파트 북문에서 오른쪽으로 약 200m 직진</span></li>
+    <li><span class="lb">전화</span><span>02-6954-0850</span></li>
+    <li><span class="lb">주차</span><span>인접 공영주차장 이용 가능 · 미리 전화 주시면 주차를 안내해 드립니다</span></li>
+    <li><span class="lb">결제</span><span>신용카드 · 간편결제 · 계좌이체</span></li>
+  </ul>
+  <table class="hours">
+    <tr><td>월 – 목</td><td>10:00 – 19:00</td></tr>
+    <tr><td>금</td><td>10:00 – 19:00 <span style="font-size:.78rem;color:var(--ink-soft)">(공휴일 휴무)</span></td></tr>
+    <tr><td>토</td><td>10:00 – 14:00 · 오후 2시 이후 예약상담</td></tr>
+    <tr><td>일</td><td><span class="closed">정기휴무</span> · 종일 예약상담 가능</td></tr>
+  </table>
+  <a class="book-btn" href="https://m.booking.naver.com/booking/13/bizes/1473783/items/7788114?area=pll&lang=ko&theme=place" target="_blank" rel="noopener">네이버 예약하기 →</a>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="serif">아빠한약국</span>
+    대표 한약사 김태관<br>
+    서울 강남구 영동대로57길 28 상가동 2층 · 02-6954-0850<br>
+    사업자등록번호 000-00-00000 (확인 후 기입)<br>
+    © 2026 Appa Herbal Pharmacy
+  </div>
+</footer>
+
+<!-- ── 여기서부터 한약국과 분리된 별도 영역 ── -->
+<div class="divider-note">
+  <div class="wrap">아래는 아빠한약국의 한약 조제와 무관한 별도 사업자의 광고 영역입니다.</div>
+</div>
+
+<section class="ad fade">
+  <div class="wrap">
+    <span class="ad-tag">광고 · (주)경건한</span>
+    <div class="ad-brand">경건한 고(膏) · 환(丸)</div>
+    <div class="ad-co">(주)경건한 · 식품 제조 · 판매</div>
+    <figure>
+      <div class="ad-photo"><img src="images/img07.jpg" alt="경건한 고 제품 진열"></div>
+    </figure>
+    <p class="ad-copy">직접 오래 달인 고(膏) 형태의 제품과, 정성껏 빚은 환(丸) 제품을 만듭니다. 대상별로 구성을 나누어 준비했습니다.</p>
+    <div class="ad-lines">
+      <div class="ad-line"><strong>수험생용</strong><span>남 · 여</span></div>
+      <div class="ad-line"><strong>남성(일반)용</strong><span>성인 남성</span></div>
+      <div class="ad-line"><strong>여성(일반)용</strong><span>성인 여성</span></div>
+      <div class="ad-line"><strong>갱년기 여성용</strong><span>중년 여성</span></div>
+      <div class="ad-line"><strong>어르신용</strong><span>고령자</span></div>
+      <div class="ad-line"><strong>선물 구성</strong><span>도자기 포장</span></div>
+    </div>
+    <div class="ad-cta-row">
+      <a class="ad-cta ad-cta-fill" href="https://mkt.shopping.naver.com/link/687f3bcc737850018e4d610e" target="_blank" rel="noopener">경건한 스토어 홈 →</a>
+      <a class="ad-cta js-tel" href="tel:0264871119" target="_top" data-tel="02-6487-1119">제품 문의 02-6487-1119</a>
+    </div>
+    <div class="ad-disc">
+      본 제품은 (주)경건한이 제조·판매하는 식품이며, 아빠한약국이 조제하는 한약과는 별개입니다. 한약국에서는 판매하지 않습니다.<br>
+      본 제품은 의약품이 아니며, 질병의 예방·치료를 위한 것이 아닙니다. 구성과 가격은 판매처에 문의해 주세요.
+    </div>
+  </div>
+</section>
+
+<nav class="sticky-cta">
+  <a href="tel:0269540850" target="_top">전화 상담</a>
+  <a href="https://m.booking.naver.com/booking/13/bizes/1473783/items/7788114?area=pll&lang=ko&theme=place" target="_blank" rel="noopener">네이버 예약</a>
+</nav>
+
+<script>
+// tel: 링크 폴백 — 전화 앱이 없거나 프레임 안에서 차단된 경우 번호를 클립보드로
+document.querySelectorAll('a[href^="tel:"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const num = a.dataset.tel || a.getAttribute('href').replace('tel:','');
+    const canCall = /iPhone|iPad|Android|Mobile/i.test(navigator.userAgent);
+    if(canCall) return;                    // 모바일은 기본 동작(전화 연결)에 맡김
+    e.preventDefault();
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(num).then(()=>{
+        const t=a.textContent; a.textContent='번호 복사됨 · '+num;
+        setTimeout(()=>a.textContent=t,1800);
+      });
+    } else {
+      window.top.location.href = a.getAttribute('href');
+    }
+  });
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
