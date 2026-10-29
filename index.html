@@ -85,7 +85,8 @@ figcaption{font-size:.74rem;color:var(--ink-soft);margin-top:8px}
 
 /* ── 한약사 ── */
 .director{display:flex;flex-direction:column;gap:24px;margin-top:8px}
-.cred-photo{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;aspect-ratio:6/5;background:#EDEAE0}
+.cred-photo{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:#EDEAE0}
+@media(min-width:600px){.director .cred-photo{align-self:stretch;aspect-ratio:auto;min-height:100%}}
 .career{list-style:none;margin-top:20px}
 .career li{padding:10px 0;border-bottom:1px solid var(--line);font-size:.9rem;display:flex;gap:14px}
 .career .yr{color:var(--gold);font-weight:600;min-width:3.4em;font-size:.8rem;padding-top:3px}
